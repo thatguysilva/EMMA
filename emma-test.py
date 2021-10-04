@@ -1,7 +1,8 @@
 from PIL import Image
 import tkinter as tk
-from tkinter import Text, Entry, Button, DISABLED
+from tkinter import Text, Entry, Button, DISABLED, constants, END, NORMAL
 from chat import get_response, bot_name
+from tkinter import messagebox
 
 root = tk.Tk()
 root.geometry('300x600')
@@ -40,27 +41,27 @@ gif_label.pack()
 animation(count)
 
 
-def _on_enter_pressed(root,event):
-    msg = root.msg_entry.get()
-    root._insert_message(msg, "You")
+def _on_enter_pressed(event):
+    msg = msg_entry.get()
+    _insert_message(msg, "You")
 
 
 
-def _insert_message(root, msg, sender):
+def _insert_message(msg, sender):
     if not msg:
         return
 
-    self.msg_entry.delete(0, END)
+    msg_entry.delete(0, END)
     msg1 = f"{sender}: {msg}\n\n"
-    root.text_widget.configure(state = NORMAL)
-    root.text_widget.insert(END, msg1)
-    root.text_widget.configure(state=DISABLED)
+    text_widget.configure(state = NORMAL)
+    text_widget.insert(END, msg1)
+    text_widget.configure(state=DISABLED)
 
     msg2 = f"{bot_name}: {get_response(msg)}\n\n"
-    root.text_widget.configure(state = NORMAL)
-    root.text_widget.insert(END, msg2)
-    root.text_widget.configure(state=DISABLED)
-    root.text_widget.see(END)
+    text_widget.configure(state = NORMAL)
+    text_widget.insert(END, msg2)
+    text_widget.configure(state=DISABLED)
+    text_widget.see(END)
 
 text_widget = Text(root, bg="black", fg="white", padx=5, pady=10)
 
@@ -70,9 +71,9 @@ text_widget.configure(cursor="arrow", state=DISABLED)
 msg_entry = Entry(root, bg="black", fg="white")
 msg_entry.place(width=260, height=30, y=550)
 msg_entry.focus()
-msg_entry.bind("<Return>", _on_enter_pressed) #use this on BRO
+msg_entry.bind("<Return>", _on_enter_pressed)
 
-send_button = Button(root, text="Send", font=("Helvetiva",8), bg="black",fg="white", command=lambda: root._on_enter_pressed(None))
+send_button = Button(root, text="Send", font=("Helvetica",8), bg="black",fg="white", command=lambda: _on_enter_pressed(None))
 send_button.place(width=40,height=30,x=260,y=550)
 
 
