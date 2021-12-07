@@ -65,16 +65,16 @@ def _insert_message(msg, sender):
 
 text_widget = Text(root, bg="black", fg="white", padx=5, pady=10)
 
-text_widget.place(width=300,height=200, y=350)
+text_widget.place(width=300,height=230, y=350)
 text_widget.configure(cursor="arrow", state=DISABLED)
 
 msg_entry = Entry(root, bg="black", fg="white")
-msg_entry.place(width=260, height=30, y=550)
+msg_entry.place(width=260, height=30, y=570)
 msg_entry.focus()
 msg_entry.bind("<Return>", _on_enter_pressed)
 
 send_button = Button(root, text="Send", font=("Helvetica",8), bg="black",fg="white", command=lambda: _on_enter_pressed(None))
-send_button.place(width=40,height=30,x=260,y=550)
+send_button.place(width=40,height=30,x=260,y=570)
 
 
 root.mainloop()
