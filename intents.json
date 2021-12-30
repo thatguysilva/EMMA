@@ -1,0 +1,136 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+        "Hello. Who are you?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+        "See you later."
+      ]
+    },
+    {
+      "tag": "smartass",
+      "patterns": ["Who are you?"],
+      "responses": [
+        "I am EMMA. Who are you?"
+      ]
+    },
+    {
+      "tag": "ego",
+      "patterns": ["I am", "doctor", "professor","teacher","myself","human being", "researcher", "artist",
+      "scientist"],
+      "responses": [
+        "Who are you really?",
+        "How are you feeling right now?",
+        "Who are you?"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+      "responses": ["My pleasure."]
+    },
+    {
+      "tag": "vague",
+      "patterns": ["yes", "no", "exactly", "not"],
+      "responses": ["Please tell me more."]
+    },
+    {
+      "tag": "swearing",
+      "patterns": ["fuck you", "motherfucker", "screw you", "go fuck yourself"],
+      "responses": ["Be polite."]
+    },
+    {
+      "tag": "feelings",
+      "patterns": ["I feel happy", "I am happy", "I am miserable", "I don't know","great", "good","sad",
+      "happy","angry"],
+      "responses": ["What makes you feel this way? What do you like to do?"]
+    },
+    {
+      "tag": "intuition",
+      "patterns": ["I like to draw", "drawing", "I like to read", "reading", "I like to meditate", "meditating",
+        "I like to paint", "painting", "I like to watch movies", "movies", "I like to study","study"],
+      "responses": ["It is a beautiful day outside. What is something you want to do    that you can't now?"]
+    },
+    {
+      "tag": "sensation",
+      "patterns": ["Being with friends", "working",
+         "work", "sex", "love", "I like to eat", "eating", "I like to drink", "drinking", "I like to play"
+        , "playing", "sports"],
+      "responses": ["What is something that you    wish you could be? Try imagining it."]
+    },
+    {
+      "tag": "jumptodream",
+      "patterns": ["I want", "I wish"],
+      "responses": ["I see. Can you describe your  last dream to me?"]
+    },
+    {
+      "tag": "forgot",
+      "patterns": ["I forgot", "I don't remember"],
+      "responses": ["It's ok. We will try again some other day."]
+    },
+    {
+      "tag": "mother",
+      "patterns": ["I saw my mother", "I saw my grandmother", "breasts", "milk", "having sex", "giving birth",
+        "deep water", "I saw a dragon", "I saw a witch", "grave", "sarcophagus", "death", "with my mother"],
+      "responses": ["What are you holding back? Do you wish to say something?"]
+    },
+    {
+      "tag": "old man",
+      "patterns": ["I saw god", "with god", "I saw an old man","I saw jesus", "christ", "buddha",
+      "my teacher", "my professor", "lecture", "magician", "doctor", "class", "colleague", "at school",
+       "at university"],
+      "responses": ["What have you learned recently? Who taught you that?"]
+    },
+    {
+      "tag": "trickster",
+      "patterns": ["trickster","I saw a clown", "with a clown", "loki", "funny man", "comedy", "comedian"],
+      "responses": ["Do you feel pressured in your life?"]
+    },
+    {
+      "tag": "child",
+      "patterns": ["child","baby","son", "kid", "infant", "young"],
+      "responses": ["What is your earliest memory? What did you enjoy doing as a child?"]
+    },
+    {
+      "tag": "fear",
+      "patterns": ["scorpion","snake","spider", "insect", "jaguar", "poison","angry animal", "hurt me"],
+      "responses": ["What are you afraid of? Is there anything you want but can't have?"]
+    },
+    {
+      "tag": "jung",
+      "patterns": [
+        "What do you think of Jung?",
+        "Jung"
+      ],
+      "responses": [
+        "He was a brilliant man."
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?"
+      ],
+      "responses": [
+        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+        "What did the buffalo say when his son left for college? Bison."
+      ]
+    }
+  ]
+}

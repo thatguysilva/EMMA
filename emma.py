@@ -1,79 +1,82 @@
-from tkinter import *
-from chat import get_response, bot_name
 from PIL import Image
+import tkinter as tk
+from tkinter import Text, Entry, Button, DISABLED, constants, END, NORMAL
+from chat import get_response, bot_name
+from tkinter import messagebox
+
+root = tk.Tk()
+root.iconbitmap(default='Blank.ico')
+root.geometry('300x600')
+root.resizable(False, False)
+root.title("                               EMMA")
+file="mandala.gif"
+
+info = Image.open(file)
+
+frames = info.n_frames  # gives total number of frames that gif contains
+
+# creating list of PhotoImage objects for each frames
+im = [tk.PhotoImage(file=file,format=f"gif -index {i}") for i in range(frames)]
 
 
 
+count = 0
+anim = None
+def animation(count):
+    global anim
+    im2 = im[count]
 
-class chatapp:
+    gif_label.configure(image=im2)
+    count += 1
+    if count == frames:
+        count = 0
+    anim = root.after(20,lambda :animation(count))
 
-    def __init__(self):
-        self.window = Tk()
-        self._setup_main_window()
+def stop_animation():
+    root.after_cancel(anim)
 
-
-    def run(self):
-        self.window.mainloop()
-
-
-    def _setup_main_window(self):
-        self.window.title(" ")
-        self.window.resizable(width=False,height=False)
-        self.window.configure(width=470, height=550, bg="black")
-
-        head_label = Label(self.window, bg = "black", fg="white", text="E M M A", font=("Helvetica",13,"bold"), pady=10)
-        head_label.place(relwidth=1)
-
-        line = Label(self.window, width=450, bg="gray")
-        line.place(relwidth=1, rely=0.07, relheight=0.012)
-
-        self.text_widget = Text(self.window, width=20, height=2, bg="black", fg="white", padx=5, pady=5)
-
-        self.text_widget.place(relheight=0.745, relwidth=1, rely=0.08)
-        self.text_widget.configure(cursor="arrow", state=DISABLED)
-
-        scrollbar = Scrollbar(self.text_widget)
-        scrollbar.place(relheight=1, relx=0.974)
-        scrollbar.configure(command=self.text_widget.yview)
-
-        bottom_label = Label(self.window, bg="gray", height=80)
-        bottom_label.place(relwidth=1, rely=0.825)
-
-        self.msg_entry = Entry(bottom_label, bg="#2c3e50", fg="white")
-        self.msg_entry.place(relwidth=0.74, relheight=0.06, rely=0.008, relx=0.011)
-        self.msg_entry.focus()
-        self.msg_entry.bind("<Return>", self._on_enter_pressed) #use this on BRO
-
-        send_button = Button(bottom_label, text="Send", font="Helvetiva", width=20, bg="gray", command=lambda: self._on_enter_pressed(None))
-        send_button.place(relx=0.77, rely=0.008, relheight=0.06,relwidth=0.22)
-
-        
+gif_label = tk.Label(root,image="")
+gif_label.pack()
 
 
-    def _on_enter_pressed(self,event):
-        msg = self.msg_entry.get()
-        self._insert_message(msg, "You")
+animation(count)
 
 
 
-    def _insert_message(self, msg, sender):
-        if not msg:
-            return
+def _on_enter_pressed(event):
+    msg = msg_entry.get()
+    _insert_message(msg, "You")
 
-        self.msg_entry.delete(0, END)
-        msg1 = f"{sender}: {msg}\n\n"
-        self.text_widget.configure(state = NORMAL)
-        self.text_widget.insert(END, msg1)
-        self.text_widget.configure(state=DISABLED)
 
-        msg2 = f"{bot_name}: {get_response(msg)}\n\n"
-        self.text_widget.configure(state = NORMAL)
-        self.text_widget.insert(END, msg2)
-        self.text_widget.configure(state=DISABLED)
-        self.text_widget.see(END)
 
-        
+def _insert_message(msg, sender):
+    if not msg:
+        return
 
-if __name__ == "__main__":
-    app = chatapp()
-    app.run()
+    msg_entry.delete(0, END)
+    msg1 = f"{sender}: {msg}\n\n"
+    text_widget.configure(state = NORMAL)
+    text_widget.insert(END, msg1)
+    text_widget.configure(state=DISABLED)
+
+    msg2 = f"{bot_name}: {get_response(msg)}\n\n"
+    text_widget.configure(state = NORMAL)
+    text_widget.insert(END, msg2)
+    text_widget.configure(state=DISABLED)
+    text_widget.see(END)
+
+text_widget = Text(root, bg="black", fg="white", padx=5, pady=10)
+text_widget.insert(END, "EMMA: Who are you? \n \n")
+text_widget.place(width=300,height=230, y=350)
+text_widget.configure(cursor="arrow", state=DISABLED)
+
+msg_entry = Entry(root, bg="black", fg="white")
+msg_entry.place(width=260, height=30, y=570)
+msg_entry.focus()
+msg_entry.bind("<Return>", _on_enter_pressed)
+
+send_button = Button(root, text="Send", font=("Helvetica",8), bg="black",fg="white", command=lambda: _on_enter_pressed(None))
+send_button.place(width=40,height=30,x=260,y=570)
+
+
+root.mainloop()
